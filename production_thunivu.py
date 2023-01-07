@@ -11,6 +11,13 @@ display = Display(visible=0, size=(800, 800))
 display.start()
 import chromedriver_autoinstaller
 
+def notavailable():
+    india = pytz.timezone("Asia/Calcutta") 
+    timeInIndia = datetime.now(india)
+    current_time = timeInIndia.strftime("%H:%M:%S")
+    message="THUNIVU tickets not available at"+current_time
+    base_url='https://api.telegram.org/bot5897785242:AAHTwgdMRFOKG0GgNJg0WIawHuF_Xj4fk-c/sendMessage?chat_id=-800086196&text='+message
+
 def available():
     india = pytz.timezone("Asia/Calcutta") 
     timeInIndia = datetime.now(india)
@@ -51,4 +58,6 @@ while(globalcheck!=1):
         available()
     else:
         globalcheck=0
-        time.sleep(20)
+        notavailable()
+    
+    time.sleep(1)
