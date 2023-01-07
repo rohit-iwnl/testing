@@ -50,4 +50,4 @@ while(globalcheck!=1):
         globalcheck=0
 
 
-    time.sleep(1)
+    time.sleep(100)
