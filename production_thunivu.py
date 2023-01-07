@@ -6,9 +6,6 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
-from pyvirtualdisplay import Display
-display = Display(visible=0, size=(800, 800))  
-display.start()
 import chromedriver_autoinstaller
 
 def notavailable():
@@ -16,14 +13,15 @@ def notavailable():
     timeInIndia = datetime.now(india)
     current_time = timeInIndia.strftime("%H:%M:%S")
     message="THUNIVU tickets not available at"+current_time
-    base_url='https://api.telegram.org/bot5897785242:AAHTwgdMRFOKG0GgNJg0WIawHuF_Xj4fk-c/sendMessage?chat_id=-800086196&text='+message
+    base_url='https://api.telegram.org/bot5897785242:AAHTwgdMRFOKG0GgNJg0WIawHuF_Xj4fk-c/sendMessage?chat_id=-822204294&text='+message
+    requests.get(base_url)
 
 def available():
     india = pytz.timezone("Asia/Calcutta") 
     timeInIndia = datetime.now(india)
     current_time = timeInIndia.strftime("%H:%M:%S")
     message="THUNIVU TICKETS OUT!! at"+current_time
-    base_url='https://api.telegram.org/bot5897785242:AAHTwgdMRFOKG0GgNJg0WIawHuF_Xj4fk-c/sendMessage?chat_id=-800086196&text='+message
+    base_url='https://api.telegram.org/bot5897785242:AAHTwgdMRFOKG0GgNJg0WIawHuF_Xj4fk-c/sendMessage?chat_id=-822204294&text='+message
     requests.get(base_url)
 
 chromedriver_autoinstaller.install()
@@ -41,7 +39,7 @@ while(globalcheck!=1):
     theatresList=[]
 
     path = "https://www.ticketnew.com/Thunivu-Movie-Tickets-Online-Show-Timings/Online-Advance-Booking/25862/C/Tirunelveli"
-    browser = webdriver.Chrome(chrome_options=option)
+    browser = webdriver.Chrome(options=option)
     browser.get(path)
     count= (len(browser.find_elements(By.CLASS_NAME,"tn-entity-details"))) 
 
@@ -53,7 +51,7 @@ while(globalcheck!=1):
         except:
             break
 
-    if 'RAM' or 'ram' in str(theatresList):
+    if 'RAM' in str(theatresList):
         globalcheck=1
         available()
     else:
