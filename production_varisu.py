@@ -48,6 +48,5 @@ while(globalcheck!=1):
         available()
     else:
         globalcheck=0
-        available()
     
     time.sleep(100)
