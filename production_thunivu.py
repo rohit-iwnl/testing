@@ -1,6 +1,7 @@
 import requests
 from datetime import datetime
 import time
+import pytz
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.webdriver import WebDriver
@@ -11,17 +12,19 @@ display.start()
 import chromedriver_autoinstaller
 
 def notAvailable():
-    t= time.localtime()
-    current_time = time.strftime("%H:%M:%S", t)
-    message="Tickets not available at"+current_time
+    india = pytz.timezone("Asia/Calcutta") 
+    timeInIndia = datetime.now(india)
+    current_time = timeInIndia.strftime("%H:%M:%S")
+    message="THUNIVU!!! Tickets not available at"+current_time
     base_url='https://api.telegram.org/bot5897785242:AAHTwgdMRFOKG0GgNJg0WIawHuF_Xj4fk-c/sendMessage?chat_id=-800086196&text='+message
     requests.get(base_url)
 
 
 def available():
-    t= time.localtime()
-    current_time = time.strftime("%H:%M:%S", t)
-    message="TICKETS OUT!! at"+current_time
+    india = pytz.timezone("Asia/Calcutta") 
+    timeInIndia = datetime.now(india)
+    current_time = timeInIndia.strftime("%H:%M:%S")
+    message="THUNIVU TICKETS OUT!! at"+current_time
     base_url='https://api.telegram.org/bot5897785242:AAHTwgdMRFOKG0GgNJg0WIawHuF_Xj4fk-c/sendMessage?chat_id=-800086196&text='+message
     requests.get(base_url)
 
@@ -39,7 +42,7 @@ while(globalcheck!=1):
 
     theatresList=[]
 
-    path = "https://www.ticketnew.com/Varisu-Movie-Tickets-Online-Show-Timings/Online-Advance-Booking/25739/C/Tirunelveli"
+    path = "https://www.ticketnew.com/Thunivu-Movie-Tickets-Online-Show-Timings/Online-Advance-Booking/25862/C/Tirunelveli"
     browser = webdriver.Chrome(executable_path="C:\\Users\Administrator\\Downloads\\chromedriver_win32\\chromeriver.exe",chrome_options=option)
     browser.get(path)
     count= (len(browser.find_elements(By.CLASS_NAME,"tn-entity-details"))) 
