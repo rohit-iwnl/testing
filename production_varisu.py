@@ -51,6 +51,4 @@ while(globalcheck!=1):
         available()
     else:
         globalcheck=0
-
-        
-    time.sleep(1)
+        time.sleep(20)
