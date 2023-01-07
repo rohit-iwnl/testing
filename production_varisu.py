@@ -11,15 +11,6 @@ display = Display(visible=0, size=(800, 800))
 display.start()
 import chromedriver_autoinstaller
 
-def notAvailable():
-    india = pytz.timezone("Asia/Calcutta") 
-    timeInIndia = datetime.now(india)
-    current_time = timeInIndia.strftime("%H:%M:%S")
-    message="VARISU!!! Tickets not available at"+current_time
-    base_url='https://api.telegram.org/bot5897785242:AAHTwgdMRFOKG0GgNJg0WIawHuF_Xj4fk-c/sendMessage?chat_id=-800086196&text='+message
-    requests.get(base_url)
-
-
 def available():
     india = pytz.timezone("Asia/Calcutta") 
     timeInIndia = datetime.now(india)
@@ -55,11 +46,11 @@ while(globalcheck!=1):
         except:
             break
 
-    if 'RAM' in str(theatresList):
+    if 'RAM' or 'MUTHURAM' or 'ram' or 'muthuram' in str(theatresList):
         globalcheck=1
         available()
     else:
         globalcheck=0
-        notAvailable()
+
         
     time.sleep(20)
