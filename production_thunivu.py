@@ -52,4 +52,4 @@ while(globalcheck!=1):
     else:
         globalcheck=0
         
-    time.sleep(100)
+    time.sleep(1)
