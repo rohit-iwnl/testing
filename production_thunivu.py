@@ -41,7 +41,7 @@ while(globalcheck!=1):
     theatresList=[]
 
     path = "https://www.ticketnew.com/Thunivu-Movie-Tickets-Online-Show-Timings/Online-Advance-Booking/25862/C/Tirunelveli"
-    browser = webdriver.Chrome(options=option)
+    browser = webdriver.Chrome(chrome_options=option)
     browser.get(path)
     count= (len(browser.find_elements(By.CLASS_NAME,"tn-entity-details"))) 
 
