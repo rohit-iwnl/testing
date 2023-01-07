@@ -34,7 +34,7 @@ while(globalcheck!=1):
     theatresList=[]
 
     path = "https://www.ticketnew.com/Varisu-Movie-Tickets-Online-Show-Timings/Online-Advance-Booking/25739/C/Tirunelveli"
-    browser = webdriver.Chrome(executable_path="C:\\Users\Administrator\\Downloads\\chromedriver_win32\\chromeriver.exe",chrome_options=option)
+    browser = webdriver.Chrome(options=option)
     browser.get(path)
     count= (len(browser.find_elements(By.CLASS_NAME,"tn-entity-details"))) 
 
@@ -46,7 +46,7 @@ while(globalcheck!=1):
         except:
             break
 
-    if 'RAM' or 'MUTHURAM' or 'ram' or 'muthuram' in str(theatresList):
+    if 'RAM' or 'ram' in str(theatresList):
         globalcheck=1
         available()
     else:
