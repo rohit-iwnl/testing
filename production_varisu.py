@@ -6,16 +6,13 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
-from pyvirtualdisplay import Display
-display = Display(visible=0, size=(800, 800))  
-display.start()
 import chromedriver_autoinstaller
 
 def available():
     india = pytz.timezone("Asia/Calcutta") 
     timeInIndia = datetime.now(india)
     current_time = timeInIndia.strftime("%H:%M:%S")
-    message="VARISU TICKETS OUT!! at"+current_time
+    message="VARISU TICKETS OUT!! at "+current_time
     base_url='https://api.telegram.org/bot5897785242:AAHTwgdMRFOKG0GgNJg0WIawHuF_Xj4fk-c/sendMessage?chat_id=-800086196&text='+message
     requests.get(base_url)
 
@@ -46,9 +43,11 @@ while(globalcheck!=1):
         except:
             break
 
-    if 'RAM' or 'ram' in str(theatresList):
+    if 'RAM' in str(theatresList):
         globalcheck=1
         available()
     else:
         globalcheck=0
-        time.sleep(20)
+        available()
+    
+    time.sleep(1)

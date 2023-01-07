@@ -8,20 +8,12 @@ from selenium.webdriver.chrome.webdriver import WebDriver
 from selenium.webdriver.common.by import By
 import chromedriver_autoinstaller
 
-def notavailable():
-    india = pytz.timezone("Asia/Calcutta") 
-    timeInIndia = datetime.now(india)
-    current_time = timeInIndia.strftime("%H:%M:%S")
-    message="THUNIVU tickets not available at"+current_time
-    base_url='https://api.telegram.org/bot5897785242:AAHTwgdMRFOKG0GgNJg0WIawHuF_Xj4fk-c/sendMessage?chat_id=-822204294&text='+message
-    requests.get(base_url)
-
 def available():
     india = pytz.timezone("Asia/Calcutta") 
     timeInIndia = datetime.now(india)
     current_time = timeInIndia.strftime("%H:%M:%S")
-    message="THUNIVU TICKETS OUT!! at"+current_time
-    base_url='https://api.telegram.org/bot5897785242:AAHTwgdMRFOKG0GgNJg0WIawHuF_Xj4fk-c/sendMessage?chat_id=-822204294&text='+message
+    message="THUNIVU TICKETS OUT!! at "+current_time
+    base_url='https://api.telegram.org/bot5897785242:AAHTwgdMRFOKG0GgNJg0WIawHuF_Xj4fk-c/sendMessage?chat_id=-800086196&text='+message
     requests.get(base_url)
 
 chromedriver_autoinstaller.install()
@@ -56,6 +48,6 @@ while(globalcheck!=1):
         available()
     else:
         globalcheck=0
-        notavailable()
-    
+
+
     time.sleep(1)
